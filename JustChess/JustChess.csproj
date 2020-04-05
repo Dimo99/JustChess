@@ -46,6 +46,7 @@
     <Compile Include="Common\ChessColor.cs" />
     <Compile Include="Common\Console\ConsoleConstants.cs" />
     <Compile Include="Common\Console\ConsoleHelpers.cs" />
+    <Compile Include="Common\Console\Patterns.cs" />
     <Compile Include="Common\GlobalConstants.cs" />
     <Compile Include="Common\GlobalErrorMessages.cs" />
     <Compile Include="Common\Move.cs" />

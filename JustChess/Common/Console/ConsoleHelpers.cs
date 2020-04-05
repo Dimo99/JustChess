@@ -5,112 +5,8 @@
 
     using Figure;
 
-    public static class ConsoleHelpers
+    public static partial class ConsoleHelpers
     {
-        private static readonly IDictionary<FigureType, bool[,]> Patterns = new Dictionary<FigureType, bool[,]>
-        {
-            { FigureType.Pawn, new[,]
-                {
-                    { false, false, false, false, false, false, false, false, false, },
-                    { false, false, false, false, false, false, false, false, false, },
-                    { false, false, false, false, true, false, false, false, false, },
-                    { false, false, false, true, true, true, false, false, false, },
-                    { false, false, false, true, true, true, false, false, false, },
-                    { false, false, false, false, true, false, false, false, false, },
-                    { false, false, false, true, true, true, false, false, false, },
-                    { false, false, true, true, true, true, true, false, false, },
-                    { false, false, false, false, false, false, false, false, false, }
-                } 
-            },
-            { FigureType.Rook, new[,]
-                {
-                    { false, false, false, false, false, false, false, false, false, },
-                    { false, false, true, false, true, false, true, false, false, },
-                    { false, false, false, true, true, true, false, false, false, },
-                    { false, false, false, true, true, true, false, false, false, },
-                    { false, false, false, true, true, true, false, false, false, },
-                    { false, false, false, true, true, true, false, false, false, },
-                    { false, false, true, true, true, true, true, false, false, },
-                    { false, false, true, true, true, true, true, false, false, },
-                    { false, false, false, false, false, false, false, false, false, }
-                }
-            },
-            { FigureType.Knight, new[,]
-                {
-                    { false, false, false, false, false, false, false, false, false, },
-                    { false, false, false, false, true, true, false, false, false, },
-                    { false, false, false, true, true, true, true, false, false, },
-                    { false, false, true, true, true, false, true, false, false, },
-                    { false, false, false, true, false, true, true, false, false, },
-                    { false, false, false, false, true, true, true, false, false, },
-                    { false, false, false, true, true, true, false, false, false, },
-                    { false, false, true, true, true, true, true, false, false, },
-                    { false, false, false, false, false, false, false, false, false, }
-                } 
-            },
-            { FigureType.Bishop, new[,]
-                {
-                    { false, false, false, false, false, false, false, false, false, },
-                    { false, false, false, false, true, false, false, false, false, },
-                    { false, false, false, true, true, true, false, false, false, },
-                    { false, false, true, true, false, true, true, false, false, },
-                    { false, false, true, false, false, false, true, false, false, },
-                    { false, false, false, true, false, true, false, false, false, },
-                    { false, false, false, false, true, false, false, false, false, },
-                    { false, true, true, true, false, true, true, true, false, },
-                    { false, false, false, false, false, false, false, false, false, }
-                }
-            },
-            { FigureType.King, new[,]
-                {
-                    { false, false, false, false, false, false, false, false, false, },
-                    { false, false, false, false, true, false, false, false, false, },
-                    { false, false, false, true, true, true, false, false, false, },
-                    { false, true, true, false, true, false, true, true, false, },
-                    { false, true, true, true, false, true, true, true, false, },
-                    { false, true, true, true, true, true, true, true, false, },
-                    { false, false, true, true, true, true, true, false, false, },
-                    { false, false, true, true, true, true, true, false, false, },
-                    { false, false, false, false, false, false, false, false, false, }
-                } 
-            },
-            { FigureType.Queen, new[,]
-                {
-                    { false, false, false, false, false, false, false, false, false, },
-                    { false, false, false, false, true, false, false, false, false, },
-                    { false, false, true, false, true, false, true, false, false, },
-                    { false, false, false, true, false, true, false, false, false, },
-                    { false, true, false, true, true, true, false, true, false, },
-                    { false, false, true, false, true, false, true, false, false, },
-                    { false, false, true, true, false, true, true, false, false, },
-                    { false, false, true, true, true, true, true, false, false, },
-                    { false, false, false, false, false, false, false, false, false, }
-                } 
-            },
-        };
-
-        public static ConsoleColor ToConsoleColor(this ChessColor chessColor)
-        {
-            switch (chessColor)
-            {
-                case ChessColor.Black:
-                    return ConsoleColor.Black;
-                case ChessColor.White:
-                    return ConsoleColor.White;
-                case ChessColor.Brown:
-                    return ConsoleColor.DarkYellow;
-                default:
-                    throw new InvalidOperationException("Cannot convert chess color!");
-            }
-        }
-
-        public static void SetCursorAtCenter(int lengthOfMessage)
-        {
-            int centerRow = Console.WindowHeight / 2;
-            int centerCol = (Console.WindowWidth / 2) - (lengthOfMessage / 2);
-            Console.SetCursorPosition(centerCol, centerRow);
-        }
-
         public static void PrintFigure(Figure figure, ConsoleColor backgroundColor, int top, int left)
         {
             if (figure == null)
@@ -145,15 +41,36 @@
             }
         }
 
-        public static void PrintEmptySquare(ConsoleColor backgroundColor, int top, int left)
+        public static void PrintBorder(int startCol, int startRow, int boardTotalRows, int boardTotalCols, ConsoleColor borderColor)
         {
-            for (int i = 0; i < ConsoleConstants.CharactersPerRowPerBoardSquare; i++)
+            DrawLetters(startCol, startRow, boardTotalRows, boardTotalCols);
+            DrawNumbers(startCol, startRow, boardTotalRows, boardTotalCols);
+
+            DrawTopBorder(startCol, startRow, boardTotalRows, borderColor);
+            DrawBottomBorder(startCol, startRow, boardTotalRows, borderColor);
+            DrawRightBorder(startCol, startRow, boardTotalRows, boardTotalCols, borderColor);
+            DrawLeftBorder(startCol, startRow, boardTotalCols, borderColor);
+        }
+
+        public static void SetCursorAtCenter(int lengthOfMessage)
+        {
+            int centerRow = Console.WindowHeight / 2;
+            int centerCol = (Console.WindowWidth / 2) - (lengthOfMessage / 2);
+            Console.SetCursorPosition(centerCol, centerRow);
+        }
+
+        public static ConsoleColor ToConsoleColor(this ChessColor chessColor)
+        {
+            switch (chessColor)
             {
-                for (int j = 0; j < ConsoleConstants.CharactersPerColPerBoardSquare; j++)
-                {
-                    Console.SetCursorPosition(left + j, top + i);
-                    Console.Write(" ");
-                }
+                case ChessColor.Black:
+                    return ConsoleColor.Black;
+                case ChessColor.White:
+                    return ConsoleColor.White;
+                case ChessColor.Brown:
+                    return ConsoleColor.DarkYellow;
+                default:
+                    throw new InvalidOperationException("Cannot convert chess color!");
             }
         }
 
@@ -179,6 +96,82 @@
             Console.BackgroundColor = ConsoleColor.Black;
             Console.SetCursorPosition(0, row);
             Console.Write(new string(' ', Console.WindowWidth)); 
+        }
+
+        private static void PrintEmptySquare(ConsoleColor backgroundColor, int top, int left)
+        {
+            Console.BackgroundColor = backgroundColor;
+            for (int i = 0; i < ConsoleConstants.CharactersPerRowPerBoardSquare; i++)
+            {
+                for (int j = 0; j < ConsoleConstants.CharactersPerColPerBoardSquare; j++)
+                {
+                    Console.SetCursorPosition(left + j, top + i);
+                    Console.Write(" ");
+                }
+            }
+        }
+
+        private static void DrawLetters(int startCol, int startRow, int boardTotalRows, int boardTotalCols)
+        {
+            var start = startCol + (ConsoleConstants.CharactersPerRowPerBoardSquare / 2);
+            for (int i = 0; i < boardTotalCols; i++)
+            {
+                Console.SetCursorPosition(start + (i * ConsoleConstants.CharactersPerRowPerBoardSquare), startRow - 1);
+                Console.Write((char)('A' + i));
+                Console.SetCursorPosition(start + (i * ConsoleConstants.CharactersPerRowPerBoardSquare), startRow + (boardTotalRows * ConsoleConstants.CharactersPerRowPerBoardSquare));
+                Console.Write((char)('A' + i));
+            }
+        }
+
+        private static void DrawNumbers(int startCol, int startRow, int boardTotalRows, int boardTotalCols)
+        {
+            var start = startRow + (ConsoleConstants.CharactersPerColPerBoardSquare / 2);
+            for (int i = 0; i < boardTotalRows; i++)
+            {
+                Console.SetCursorPosition(startCol - 1, start + (i * ConsoleConstants.CharactersPerColPerBoardSquare));
+                Console.Write(boardTotalRows - i);
+                Console.SetCursorPosition(startCol + (boardTotalCols * ConsoleConstants.CharactersPerColPerBoardSquare), start + (i * ConsoleConstants.CharactersPerColPerBoardSquare));
+                Console.Write(boardTotalRows - i);
+            }
+        }
+
+        private static void DrawTopBorder(int startCol, int startRow, int boardTotalRows, ConsoleColor borderColor)
+        {
+            for (int i = startCol - 2; i < startCol + (boardTotalRows * ConsoleConstants.CharactersPerRowPerBoardSquare) + 2; i++)
+            {
+                DrawBorderBolck(i, startRow - 2, borderColor);
+            }
+        }
+
+        private static void DrawBottomBorder(int startCol, int startRow, int boardTotalRows, ConsoleColor borderColor)
+        {
+            for (int i = startCol - 2; i < startCol + (boardTotalRows * ConsoleConstants.CharactersPerRowPerBoardSquare) + 2; i++)
+            {
+                DrawBorderBolck(i, startRow + (boardTotalRows * ConsoleConstants.CharactersPerRowPerBoardSquare) + 1, borderColor);
+            }
+        }
+
+        private static void DrawRightBorder(int startCol, int startRow, int boardTotalRows, int boardTotalCols, ConsoleColor borderColor)
+        {
+            for (int i = startRow - 2; i < startRow + (boardTotalCols * ConsoleConstants.CharactersPerColPerBoardSquare) + 2; i++)
+            {
+                DrawBorderBolck(startCol + (boardTotalRows * ConsoleConstants.CharactersPerRowPerBoardSquare) + 1, i, borderColor);
+            }
+        }
+
+        private static void DrawLeftBorder(int startCol, int startRow, int boardTotalCols, ConsoleColor borderColor)
+        {
+            for (int i = startRow - 2; i < startRow + (boardTotalCols * ConsoleConstants.CharactersPerColPerBoardSquare) + 2; i++)
+            {
+                DrawBorderBolck(startCol - 2, i, borderColor);
+            }
+        }
+
+        private static void DrawBorderBolck(int col, int row, ConsoleColor borderColor)
+        {
+            Console.BackgroundColor = borderColor;
+            Console.SetCursorPosition(col, row);
+            Console.Write(" ");
         }
     }
 }
