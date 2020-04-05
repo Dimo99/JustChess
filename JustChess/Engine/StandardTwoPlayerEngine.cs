@@ -44,13 +44,7 @@
 
         public void Initialize(IGameInitializationStrategy gameInitializationStrategy)
         {
-            // TODO: remove using JustChess.Players and use the input for players
-            // TODO: BUG: if players are changed - board is reversed
-            this.players = new List<IPlayer> 
-            {
-                new Player("Gosho", ChessColor.Black),
-                new Player("Pesho", ChessColor.White)
-            }; // this.input.GetPlayers(GlobalConstants.StandardGameNumberOfPlayers);
+            this.players = this.input.GetPlayers(GlobalConstants.StandardGameNumberOfPlayers);
 
             this.SetFirstPlayerIndex();
             gameInitializationStrategy.Initialize(this.players, this.board);

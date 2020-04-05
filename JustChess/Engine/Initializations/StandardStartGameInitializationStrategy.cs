@@ -38,11 +38,11 @@
             var firstPlayer = players[0];
             var secondPlayer = players[1];
 
-            this.AddArmyToBoardRow(firstPlayer, board, 8);
-            this.AddPawnsToBoardRow(firstPlayer, board, 7);
+            this.AddArmyToBoardRow(firstPlayer, board, 1);
+            this.AddPawnsToBoardRow(firstPlayer, board, 2);
 
-            this.AddPawnsToBoardRow(secondPlayer, board, 2);
-            this.AddArmyToBoardRow(secondPlayer, board, 1);
+            this.AddPawnsToBoardRow(secondPlayer, board, 7);
+            this.AddArmyToBoardRow(secondPlayer, board, 8);
         }
 
         private void AddPawnsToBoardRow(IPlayer player, IBoard board, int chessRow)
