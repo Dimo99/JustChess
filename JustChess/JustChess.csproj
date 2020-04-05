@@ -68,8 +68,7 @@
     <Compile Include="Movements\NormalPawnMovement.cs" />
     <Compile Include="Movements\NormalRookMovement.cs" />
     <Compile Include="Movements\Strategies\NormalMovementStrategy.cs" />
-    <Compile Include="Players\Contracts\IPlayer.cs" />
-    <Compile Include="Players\Player.cs" />
+    <Compile Include="Player\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\ConsoleRenderer.cs" />
     <Compile Include="Renderers\Contracts\IRenderer.cs" />

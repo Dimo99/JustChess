@@ -1,11 +1,11 @@
 ﻿namespace JustChess.Engine.Contracts
 {
     using System.Collections.Generic;
-    using Players.Contracts;
+    using Player;
 
     public interface IChessEngine
     {
-        IEnumerable<IPlayer> Players { get; }
+        IEnumerable<Player> Players { get; }
 
         void Initialize(IGameInitializationStrategy gameInitializationStrategy);
 

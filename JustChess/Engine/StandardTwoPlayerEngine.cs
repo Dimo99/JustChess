@@ -10,7 +10,7 @@
     using InputProviders.Contracts;
     using Movements.Contracts;
     using Movements.Strategies;
-    using Players.Contracts;
+    using Player;
     using Renderers.Contracts;
 
     public class StandardTwoPlayerEngine : IChessEngine
@@ -20,7 +20,7 @@
         private readonly Board board;
         private readonly IMovementStrategy movementStrategy;
 
-        private IList<IPlayer> players;
+        private IList<Player> players;
 
         private int currentPlayerIndex;
 
@@ -32,11 +32,11 @@
             this.board = new Board();
         }
 
-        public IEnumerable<IPlayer> Players
+        public IEnumerable<Player> Players
         {
             get
             {
-                return new List<IPlayer>(this.players);
+                return new List<Player>(this.players);
             }
         }
 
@@ -126,7 +126,7 @@
             }
         }
 
-        private IPlayer GetNextPlayer()
+        private Player GetNextPlayer()
         {
             this.currentPlayerIndex++;
             if (this.currentPlayerIndex >= this.players.Count)
@@ -137,7 +137,7 @@
             return this.players[this.currentPlayerIndex];
         }
 
-        private void CheckIfPlayerOwnsFigure(IPlayer player, Figure figure, Position from)
+        private void CheckIfPlayerOwnsFigure(Player player, Figure figure, Position from)
         {
             if (figure == null)
             {

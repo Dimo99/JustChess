@@ -1,13 +1,12 @@
-﻿namespace JustChess.Players
+﻿namespace JustChess.Player
 {
     using System;
     using System.Collections.Generic;
 
     using Common;
-    using Contracts;
     using Figure;
 
-    public class Player : IPlayer
+    public class Player
     {
         private readonly ICollection<Figure> figures;
 

@@ -3,12 +3,12 @@
     using System.Collections.Generic;
 
     using Common;
-    using Players.Contracts;
+    using Player;
 
     public interface IInputProvider
     {
-        IList<IPlayer> GetPlayers(int numberOfPlayers);
+        IList<Player> GetPlayers(int numberOfPlayers);
 
-        Move GetNextPlayerMove(IPlayer player);
+        Move GetNextPlayerMove(Player player);
     }
 }

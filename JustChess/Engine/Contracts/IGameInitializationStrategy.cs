@@ -3,10 +3,10 @@
     using System.Collections.Generic;
 
     using Board;
-    using Players.Contracts;
+    using Player;
 
     public interface IGameInitializationStrategy
     {
-        void Initialize(IList<IPlayer> players, Board board);
+        void Initialize(IList<Player> players, Board board);
     }
 }

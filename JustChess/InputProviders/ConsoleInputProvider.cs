@@ -6,16 +6,15 @@
     using Common;
     using Common.Console;
     using Contracts;
-    using Players;
-    using Players.Contracts;
+    using Player;
 
     public class ConsoleInputProvider : IInputProvider
     {
         private const string PlayerNameText = "Enter Player {0} name: ";
 
-        public IList<IPlayer> GetPlayers(int numberOfPlayers)
+        public IList<Player> GetPlayers(int numberOfPlayers)
         {
-            var players = new List<IPlayer>();
+            var players = new List<Player>();
             for (int i = 1; i <= numberOfPlayers; i++)
             {
                 Console.Clear();
@@ -32,7 +31,7 @@
         /// <summary>
         /// Command is in format : a5-c5
         /// </summary>
-        public Move GetNextPlayerMove(IPlayer player)
+        public Move GetNextPlayerMove(Player player)
         {
             ConsoleHelpers.ClearRow(ConsoleConstants.ConsoleRowForPlayerIO);
             Console.SetCursorPosition((Console.WindowWidth / 2) - 10, ConsoleConstants.ConsoleRowForPlayerIO);
