@@ -1,7 +1,7 @@
 ﻿namespace JustChess.Engine.Contracts
 {
     using System.Collections.Generic;
-    using JustChess.Players.Contracts;
+    using Players.Contracts;
 
     public interface IChessEngine
     {

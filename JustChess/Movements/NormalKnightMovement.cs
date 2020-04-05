@@ -2,16 +2,16 @@
 {
     using System;
 
-    using JustChess.Board.Contracts;
-    using JustChess.Common;
-    using JustChess.Figures.Contracts;
-    using JustChess.Movements.Contracts;
+    using Board;
+    using Common;
+    using Figure;
+    using Movements.Contracts;
 
     public class NormalKnightMovement : IMovement
     {
         private const string KnightInvalidMove = "{0}s cannot move this way!";
 
-        public void ValidateMove(Figure figure, IBoard board, Move move)
+        public void ValidateMove(Figure figure, Board board, Move move)
         {
             var rowDistance = Math.Abs(move.From.Row - move.To.Row);
             var colDistance = Math.Abs(move.From.Col - move.To.Col);

@@ -3,11 +3,10 @@
     using System;
     using System.Collections.Generic;
 
-    using Board.Contracts;
+    using Board;
     using Common;
     using Contracts;
-    using Figures;
-    using Figures.Contracts;
+    using Figure;
     using Players.Contracts;
 
     public class StandardStartGameInitializationStrategy : IGameInitializationStrategy
@@ -31,7 +30,7 @@
             };
         }
 
-        public void Initialize(IList<IPlayer> players, IBoard board)
+        public void Initialize(IList<IPlayer> players, Board board)
         {
             this.ValidateStrategy(players, board);
 
@@ -45,7 +44,7 @@
             this.AddArmyToBoardRow(secondPlayer, board, 8);
         }
 
-        private void AddPawnsToBoardRow(IPlayer player, IBoard board, int chessRow)
+        private void AddPawnsToBoardRow(IPlayer player, Board board, int chessRow)
         {
             for (int i = 0; i < BoardTotalRowsAndCols; i++)
             {
@@ -56,7 +55,7 @@
             }
         }
 
-        private void AddArmyToBoardRow(IPlayer player, IBoard board, int chessRow)
+        private void AddArmyToBoardRow(IPlayer player, Board board, int chessRow)
         {
             for (int i = 0; i < BoardTotalRowsAndCols; i++)
             {
@@ -67,7 +66,7 @@
             }
         }
 
-        private void ValidateStrategy(ICollection<IPlayer> players, IBoard board)
+        private void ValidateStrategy(ICollection<IPlayer> players, Board board)
         {
             if (players.Count != GlobalConstants.StandardGameNumberOfPlayers)
             {

@@ -1,4 +1,4 @@
-﻿namespace JustChess.Figures.Contracts
+﻿namespace JustChess.Figure
 {
     using System.Collections.Generic;
 

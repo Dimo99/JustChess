@@ -1,12 +1,12 @@
 ﻿namespace JustChess.Renderers.Contracts
 {
-    using JustChess.Board.Contracts;
+    using Board;
 
     public interface IRenderer
     {
         void RenderMainMenu();
 
-        void RenderBoard(IBoard board);
+        void RenderBoard(Board board);
 
         void PrintErrorMessage(string errorMessage);
     }

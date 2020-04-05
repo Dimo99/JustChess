@@ -5,7 +5,7 @@
 
     using Common;
     using Contracts;
-    using Figures.Contracts;
+    using Figure;
 
     public class Player : IPlayer
     {

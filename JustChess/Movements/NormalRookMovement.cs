@@ -2,16 +2,16 @@
 {
     using System;
 
-    using Board.Contracts;
+    using Board;
     using Common;
     using Contracts;
-    using Figures.Contracts;
+    using Figure;
 
     public class NormalRookMovement : IMovement
     {
         private const string RookInvalidMove = "{0}s can move horizontally or vertically!";
 
-        public void ValidateMove(Figure figure, IBoard board, Move move)
+        public void ValidateMove(Figure figure, Board board, Move move)
         {
             var rowDistance = Math.Abs(move.From.Row - move.To.Row);
             var colDistance = Math.Abs(move.From.Col - move.To.Col);

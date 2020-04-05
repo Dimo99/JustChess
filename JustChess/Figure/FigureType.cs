@@ -1,4 +1,4 @@
-﻿namespace JustChess.Figures
+﻿namespace JustChess.Figure
 {
     public enum FigureType
     {

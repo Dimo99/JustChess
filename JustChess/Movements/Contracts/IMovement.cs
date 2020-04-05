@@ -1,11 +1,11 @@
 ﻿namespace JustChess.Movements.Contracts
 {
-    using Board.Contracts;
+    using Board;
     using Common;
-    using Figures.Contracts;
+    using Figure;
 
     public interface IMovement
     {
-        void ValidateMove(Figure figure, IBoard board, Move move);
+        void ValidateMove(Figure figure, Board board, Move move);
     }
 }

@@ -3,8 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    using Figures.Contracts;
-    using JustChess.Figures;
+    using Figure;
 
     public static class ConsoleHelpers
     {

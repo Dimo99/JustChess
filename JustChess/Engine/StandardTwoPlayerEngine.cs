@@ -4,10 +4,9 @@
     using System.Collections.Generic;
 
     using Board;
-    using Board.Contracts;
     using Common;
     using Contracts;
-    using Figures.Contracts;
+    using Figure;
     using InputProviders.Contracts;
     using Movements.Contracts;
     using Movements.Strategies;
@@ -18,7 +17,7 @@
     {
         private readonly IRenderer renderer;
         private readonly IInputProvider input;
-        private readonly IBoard board;
+        private readonly Board board;
         private readonly IMovementStrategy movementStrategy;
 
         private IList<IPlayer> players;

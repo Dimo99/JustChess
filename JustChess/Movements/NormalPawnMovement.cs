@@ -2,17 +2,17 @@
 {
     using System;
 
-    using JustChess.Board.Contracts;
-    using JustChess.Common;
-    using JustChess.Figures.Contracts;
-    using JustChess.Movements.Contracts;
+    using Board;
+    using Common;
+    using Figure;
+    using Movements.Contracts;
 
     public class NormalPawnMovement : IMovement
     {
         private const string PawnBackwardsErrorMessage = "{0}s cannot move backwards!";
         private const string PawnInvalidMove = "{0}s cannot move this way!";
 
-        public void ValidateMove(Figure figure, IBoard board, Move move)
+        public void ValidateMove(Figure figure, Board board, Move move)
         {
             var color = figure.Color;
             var other = figure.Color == ChessColor.White ? ChessColor.Black : ChessColor.White;
@@ -86,7 +86,7 @@
             throw new InvalidOperationException(PawnInvalidMove);
         }
 
-        private bool CheckOtherFigureIfValid(IBoard board, Position to, ChessColor color)
+        private bool CheckOtherFigureIfValid(Board board, Position to, ChessColor color)
         {
             var otherFigure = board.GetFigureAtPosition(to);
             if (otherFigure != null && otherFigure.Color == color)

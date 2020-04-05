@@ -2,11 +2,11 @@
 {
     using System.Collections.Generic;
 
-    using Board.Contracts;
+    using Board;
     using Players.Contracts;
 
     public interface IGameInitializationStrategy
     {
-        void Initialize(IList<IPlayer> players, IBoard board);
+        void Initialize(IList<IPlayer> players, Board board);
     }
 }

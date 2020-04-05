@@ -1,7 +1,8 @@
 ﻿namespace JustChess.Movements.Contracts
 {
-    using JustChess.Figures;
     using System.Collections.Generic;
+
+    using Figure;
 
     public interface IMovementStrategy
     {

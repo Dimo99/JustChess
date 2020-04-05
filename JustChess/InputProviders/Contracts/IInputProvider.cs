@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
 
-    using JustChess.Common;
-    using JustChess.Players.Contracts;
+    using Common;
+    using Players.Contracts;
 
     public interface IInputProvider
     {

@@ -1,12 +1,9 @@
 ﻿namespace JustChess.Board
 {
-    using System;
+    using Common;
+    using Figure;
 
-    using JustChess.Board.Contracts;
-    using JustChess.Common;
-    using JustChess.Figures.Contracts;
-
-    public class Board : IBoard
+    public class Board
     {
         private readonly Figure[,] board;
 

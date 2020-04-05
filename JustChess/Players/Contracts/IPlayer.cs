@@ -1,7 +1,7 @@
 ﻿namespace JustChess.Players.Contracts
 {
-    using JustChess.Common;
-    using JustChess.Figures.Contracts;
+    using Common;
+    using Figure;
 
     public interface IPlayer
     {

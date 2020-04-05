@@ -3,7 +3,7 @@
     using System;
     using System.Threading;
 
-    using Board.Contracts;
+    using Board;
     using Common;
     using Common.Console;
     using Contracts;
@@ -36,7 +36,7 @@
             Thread.Sleep(1000);
         }
 
-        public void RenderBoard(IBoard board)
+        public void RenderBoard(Board board)
         {
             // TODO: validate Console dimensions
             var startRowPrint = (Console.WindowWidth / 2) - (board.TotalRows / 2 * ConsoleConstants.CharactersPerRowPerBoardSquare);

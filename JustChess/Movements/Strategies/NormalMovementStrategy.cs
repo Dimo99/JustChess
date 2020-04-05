@@ -3,7 +3,7 @@
     using System.Collections.Generic;
 
     using Contracts;
-    using JustChess.Figures;
+    using Figure;
 
     public class NormalMovementStrategy : IMovementStrategy
     {
