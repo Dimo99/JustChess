@@ -17,8 +17,7 @@
             var colDistance = Math.Abs(move.From.Col - move.To.Col);
 
             // TODO: extract to method
-            var other = figure.Color == ChessColor.White ? ChessColor.Black : ChessColor.White;
-
+            
             if (rowDistance != colDistance)
             {
                 throw new InvalidOperationException(BishopInvalidMove);
