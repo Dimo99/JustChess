@@ -27,7 +27,7 @@
         {
             ObjectValidator.CheckIfObjectIsNull(figure, GlobalErrorMessages.NullFigureErrorMessage);
 
-            // TODO: check figure and player color
+            this.CheckFigureColor(figure);
             this.CheckIfFigureExists(figure);
             this.figures.Add(figure);
         }
@@ -36,9 +36,18 @@
         {
             ObjectValidator.CheckIfObjectIsNull(figure, GlobalErrorMessages.NullFigureErrorMessage);
 
-            // TODO: check figure and player color
+            this.CheckFigureColor(figure);
             this.CheckIfFigureDoesNotExist(figure);
             this.figures.Remove(figure);
+        }
+
+        private void CheckFigureColor(IFigure figure)
+        {
+            if (figure.Color != this.Color)
+            {
+                throw new InvalidOperationException(
+                    $"{this.Color.ToString()} player can't operate with {figure.Color.ToString()} figure!");
+            }
         }
 
         private void CheckIfFigureExists(IFigure figure)
