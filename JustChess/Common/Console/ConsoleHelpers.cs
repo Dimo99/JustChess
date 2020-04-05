@@ -4,12 +4,13 @@
     using System.Collections.Generic;
 
     using Figures.Contracts;
+    using JustChess.Figures;
 
     public static class ConsoleHelpers
     {
-        private static readonly IDictionary<string, bool[,]> Patterns = new Dictionary<string, bool[,]>
+        private static readonly IDictionary<FigureType, bool[,]> Patterns = new Dictionary<FigureType, bool[,]>
         {
-            { "Pawn", new[,]
+            { FigureType.Pawn, new[,]
                 {
                     { false, false, false, false, false, false, false, false, false, },
                     { false, false, false, false, false, false, false, false, false, },
@@ -22,7 +23,7 @@
                     { false, false, false, false, false, false, false, false, false, }
                 } 
             },
-            { "Rook", new[,]
+            { FigureType.Rook, new[,]
                 {
                     { false, false, false, false, false, false, false, false, false, },
                     { false, false, true, false, true, false, true, false, false, },
@@ -35,7 +36,7 @@
                     { false, false, false, false, false, false, false, false, false, }
                 }
             },
-            { "Knight", new[,]
+            { FigureType.Knight, new[,]
                 {
                     { false, false, false, false, false, false, false, false, false, },
                     { false, false, false, false, true, true, false, false, false, },
@@ -48,7 +49,7 @@
                     { false, false, false, false, false, false, false, false, false, }
                 } 
             },
-            { "Bishop", new[,]
+            { FigureType.Bishop, new[,]
                 {
                     { false, false, false, false, false, false, false, false, false, },
                     { false, false, false, false, true, false, false, false, false, },
@@ -61,7 +62,7 @@
                     { false, false, false, false, false, false, false, false, false, }
                 }
             },
-            { "King", new[,]
+            { FigureType.King, new[,]
                 {
                     { false, false, false, false, false, false, false, false, false, },
                     { false, false, false, false, true, false, false, false, false, },
@@ -74,7 +75,7 @@
                     { false, false, false, false, false, false, false, false, false, }
                 } 
             },
-            { "Queen", new[,]
+            { FigureType.Queen, new[,]
                 {
                     { false, false, false, false, false, false, false, false, false, },
                     { false, false, false, false, true, false, false, false, false, },
@@ -111,7 +112,7 @@
             Console.SetCursorPosition(centerCol, centerRow);
         }
 
-        public static void PrintFigure(IFigure figure, ConsoleColor backgroundColor, int top, int left)
+        public static void PrintFigure(Figure figure, ConsoleColor backgroundColor, int top, int left)
         {
             if (figure == null)
             {
@@ -119,12 +120,12 @@
                 return;
             }
 
-            if (!Patterns.ContainsKey(figure.GetType().Name))
+            if (!Patterns.ContainsKey(figure.FigureType))
             {
                 return;
             }
 
-            var figurePattern = Patterns[figure.GetType().Name];
+            var figurePattern = Patterns[figure.FigureType];
 
             for (int i = 0; i < figurePattern.GetLength(0); i++)
             {

@@ -6,6 +6,6 @@
 
     public interface IMovement
     {
-        void ValidateMove(IFigure figure, IBoard board, Move move);
+        void ValidateMove(Figure figure, IBoard board, Move move);
     }
 }

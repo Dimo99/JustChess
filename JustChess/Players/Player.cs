@@ -9,13 +9,13 @@
 
     public class Player : IPlayer
     {
-        private readonly ICollection<IFigure> figures;
+        private readonly ICollection<Figure> figures;
 
         public Player(string name, ChessColor color)
         {
             // TODO: validate name length
             this.Name = name;
-            this.figures = new List<IFigure>();
+            this.figures = new List<Figure>();
             this.Color = color;
         }
 
@@ -23,7 +23,7 @@
 
         public ChessColor Color { get; private set; }
 
-        public void AddFigure(IFigure figure)
+        public void AddFigure(Figure figure)
         {
             ObjectValidator.CheckIfObjectIsNull(figure, GlobalErrorMessages.NullFigureErrorMessage);
 
@@ -32,7 +32,7 @@
             this.figures.Add(figure);
         }
 
-        public void RemoveFigure(IFigure figure)
+        public void RemoveFigure(Figure figure)
         {
             ObjectValidator.CheckIfObjectIsNull(figure, GlobalErrorMessages.NullFigureErrorMessage);
 
@@ -41,7 +41,7 @@
             this.figures.Remove(figure);
         }
 
-        private void CheckFigureColor(IFigure figure)
+        private void CheckFigureColor(Figure figure)
         {
             if (figure.Color != this.Color)
             {
@@ -50,7 +50,7 @@
             }
         }
 
-        private void CheckIfFigureExists(IFigure figure)
+        private void CheckIfFigureExists(Figure figure)
         {
             if (this.figures.Contains(figure))
             {
@@ -58,7 +58,7 @@
             }
         }
 
-        private void CheckIfFigureDoesNotExist(IFigure figure)
+        private void CheckIfFigureDoesNotExist(Figure figure)
         {
             if (!this.figures.Contains(figure))
             {

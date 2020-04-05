@@ -12,7 +12,7 @@
         private const string PawnBackwardsErrorMessage = "{0}s cannot move backwards!";
         private const string PawnInvalidMove = "{0}s cannot move this way!";
 
-        public void ValidateMove(IFigure figure, IBoard board, Move move)
+        public void ValidateMove(Figure figure, IBoard board, Move move)
         {
             var color = figure.Color;
             var other = figure.Color == ChessColor.White ? ChessColor.Black : ChessColor.White;

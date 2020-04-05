@@ -14,20 +14,20 @@
     {
         private const int BoardTotalRowsAndCols = 8;
 
-        private readonly IList<Type> figureTypes;
+        private readonly IList<FigureType> figureTypes;
 
         public StandardStartGameInitializationStrategy()
         {
-            this.figureTypes = new List<Type>
+            this.figureTypes = new List<FigureType>
             {
-                typeof(Rook),
-                typeof(Knight),
-                typeof(Bishop),
-                typeof(Queen),
-                typeof(King),
-                typeof(Bishop),
-                typeof(Knight),
-                typeof(Rook)
+                FigureType.Rook,
+                FigureType.Knight,
+                FigureType.Bishop,
+                FigureType.Queen,
+                FigureType.King,
+                FigureType.Bishop,
+                FigureType.Knight,
+                FigureType.Rook
             };
         }
 
@@ -49,7 +49,7 @@
         {
             for (int i = 0; i < BoardTotalRowsAndCols; i++)
             {
-                var pawn = new Pawn(player.Color);
+                var pawn = new Figure(player.Color, FigureType.Pawn);
                 player.AddFigure(pawn);
                 var position = new Position(chessRow, (char)(i + 'a'));
                 board.AddFigure(pawn, position);
@@ -60,11 +60,10 @@
         {
             for (int i = 0; i < BoardTotalRowsAndCols; i++)
             {
-                var figureType = this.figureTypes[i];
-                var figureInstance = (IFigure)Activator.CreateInstance(figureType, player.Color);
-                player.AddFigure(figureInstance);
+                Figure figure = new Figure(player.Color, this.figureTypes[i]);
+                player.AddFigure(figure);
                 var position = new Position(chessRow, (char)(i + 'a'));
-                board.AddFigure(figureInstance, position);
+                board.AddFigure(figure, position);
             }
         }
 

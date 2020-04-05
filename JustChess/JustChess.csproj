@@ -57,14 +57,8 @@
     <Compile Include="Engine\Initializations\StandardStartGameInitializationStrategy.cs" />
     <Compile Include="Engine\StandardTwoPlayerEngine.cs" />
     <Compile Include="EntryPoint.cs" />
-    <Compile Include="Figures\Contracts\BaseFigure.cs" />
-    <Compile Include="Figures\Bishop.cs" />
-    <Compile Include="Figures\Contracts\IFigure.cs" />
-    <Compile Include="Figures\King.cs" />
-    <Compile Include="Figures\Knight.cs" />
-    <Compile Include="Figures\Pawn.cs" />
-    <Compile Include="Figures\Queen.cs" />
-    <Compile Include="Figures\Rook.cs" />
+    <Compile Include="Figures\Figure.cs" />
+    <Compile Include="Figures\FigureType.cs" />
     <Compile Include="InputProviders\ConsoleInputProvider.cs" />
     <Compile Include="InputProviders\Contracts\IInputProvider.cs" />
     <Compile Include="Movements\Contracts\IMovement.cs" />

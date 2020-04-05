@@ -9,8 +9,8 @@
 
         ChessColor Color { get; }
 
-        void AddFigure(IFigure figure);
+        void AddFigure(Figure figure);
 
-        void RemoveFigure(IFigure figure);
+        void RemoveFigure(Figure figure);
     }
 }

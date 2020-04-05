@@ -3,47 +3,48 @@
     using System.Collections.Generic;
 
     using Contracts;
+    using JustChess.Figures;
 
     public class NormalMovementStrategy : IMovementStrategy
     {
-        private readonly IDictionary<string, IList<IMovement>> movements = new Dictionary<string, IList<IMovement>>
+        private readonly IDictionary<FigureType, IList<IMovement>> movements = new Dictionary<FigureType, IList<IMovement>>
         {
-            { "Pawn", new List<IMovement>
+            { FigureType.Pawn, new List<IMovement>
                  {
                      new NormalPawnMovement()
-                 } 
+                 }
             },
-            { "Bishop", new List<IMovement>
+            { FigureType.Bishop, new List<IMovement>
                  {
                      new NormalBishopMovement()
-                 } 
+                 }
             },
-            { "Knight", new List<IMovement>
+            { FigureType.Knight, new List<IMovement>
                  {
                      new NormalKnightMovement()
                  }
             },
-            { "King", new List<IMovement>
+            { FigureType.King, new List<IMovement>
                  {
                      new NormalKingMovement()
                  }
             },
-            { "Rook", new List<IMovement>
+            { FigureType.Rook, new List<IMovement>
                  {
                      new NormalRookMovement()
                  }
             },
-            { "Queen", new List<IMovement>
+            { FigureType.Queen, new List<IMovement>
                  {
                      new NormalBishopMovement(),
                      new NormalRookMovement()
-                 } 
+                 }
             },
         };
 
-        public IList<IMovement> GetMovements(string figure)
+        public IList<IMovement> GetMovements(FigureType figureType)
         {
-            return this.movements[figure];
+            return this.movements[figureType];
         }
     }
 }

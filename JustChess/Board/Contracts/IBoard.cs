@@ -9,12 +9,12 @@
 
         int TotalCols { get; }
 
-        void AddFigure(IFigure figure, Position position);
+        void AddFigure(Figure figure, Position position);
 
         void RemoveFigure(Position position);
 
-        IFigure GetFigureAtPosition(Position position);
+        Figure GetFigureAtPosition(Position position);
 
-        void MoveFigureAtPosition(IFigure figure, Position from, Position to);
+        void MoveFigureAtPosition(Figure figure, Position from, Position to);
     }
 }

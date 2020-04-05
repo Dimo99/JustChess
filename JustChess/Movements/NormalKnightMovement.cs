@@ -11,7 +11,7 @@
     {
         private const string KnightInvalidMove = "{0}s cannot move this way!";
 
-        public void ValidateMove(IFigure figure, IBoard board, Move move)
+        public void ValidateMove(Figure figure, IBoard board, Move move)
         {
             var rowDistance = Math.Abs(move.From.Row - move.To.Row);
             var colDistance = Math.Abs(move.From.Col - move.To.Col);

@@ -8,7 +8,7 @@
 
     public class Board : IBoard
     {
-        private readonly IFigure[,] board;
+        private readonly Figure[,] board;
 
         public Board(
             int rows = GlobalConstants.StandardGameTotalBoardRows,
@@ -16,14 +16,14 @@
         {
             this.TotalRows = rows;
             this.TotalCols = cols;
-            this.board = new IFigure[rows, cols];
+            this.board = new Figure[rows, cols];
         }
 
         public int TotalRows { get; private set; }
 
         public int TotalCols { get; private set; }
 
-        public void AddFigure(IFigure figure, Position position)
+        public void AddFigure(Figure figure, Position position)
         {
             ObjectValidator.CheckIfObjectIsNull(figure, GlobalErrorMessages.NullFigureErrorMessage);
             Position.CheckIfValid(position);
@@ -42,14 +42,14 @@
             this.board[arrRow, arrCol] = null;
         }
 
-        public IFigure GetFigureAtPosition(Position position)
+        public Figure GetFigureAtPosition(Position position)
         {
             int arrRow = this.GetArrayRow(position.Row);
             int arrCol = this.GetArrayCol(position.Col);
             return this.board[arrRow, arrCol];
         }
 
-        public void MoveFigureAtPosition(IFigure figure, Position from, Position to)
+        public void MoveFigureAtPosition(Figure figure, Position from, Position to)
         {
             int arrFromRow = this.GetArrayRow(from.Row);
             int arrFromCol = this.GetArrayCol(from.Col);

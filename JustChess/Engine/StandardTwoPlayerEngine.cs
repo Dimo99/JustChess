@@ -11,7 +11,6 @@
     using InputProviders.Contracts;
     using Movements.Contracts;
     using Movements.Strategies;
-    using Players;
     using Players.Contracts;
     using Renderers.Contracts;
 
@@ -55,7 +54,7 @@
         {
             while (true)
             {
-                IFigure figure = null;
+                Figure figure = null;
                 try
                 {
                     var player = this.GetNextPlayer();
@@ -82,7 +81,7 @@
                 catch (Exception ex)
                 {
                     this.currentPlayerIndex--;
-                    this.renderer.PrintErrorMessage(string.Format(ex.Message, figure.GetType().Name));
+                    this.renderer.PrintErrorMessage(string.Format(ex.Message, figure.FigureType.ToString()));
                 }
             }
         }
@@ -92,7 +91,7 @@
             throw new NotImplementedException();
         }
 
-        private void ValidateMovements(IFigure figure, IEnumerable<IMovement> availableMovements, Move move)
+        private void ValidateMovements(Figure figure, IEnumerable<IMovement> availableMovements, Move move)
         {
             var validMoveFound = false;
             var foundException = new Exception();
@@ -139,7 +138,7 @@
             return this.players[this.currentPlayerIndex];
         }
 
-        private void CheckIfPlayerOwnsFigure(IPlayer player, IFigure figure, Position from)
+        private void CheckIfPlayerOwnsFigure(IPlayer player, Figure figure, Position from)
         {
             if (figure == null)
             {
@@ -152,7 +151,7 @@
             }
         }
 
-        private void CheckIfToPositionIsEmpty(IFigure figure, Position to)
+        private void CheckIfToPositionIsEmpty(Figure figure, Position to)
         {
             var figureAtPosition = this.board.GetFigureAtPosition(to);
             if (figureAtPosition != null && figureAtPosition.Color == figure.Color)
